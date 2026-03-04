@@ -1,0 +1,60 @@
+services:
+  rails-app:
+    build: ./rails-app
+    ports: ["3000:3000"]
+    environment:
+      DATABASE_URL: postgres://postgres:password@postgres:5432/gotchi_forge
+      RAILS_ENV: development
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  go-processor:
+    build: ./go-processor
+    ports: ["8081:8081"]
+    environment:
+      MONGO_URI: mongodb://mongo:27017/gotchi_forge
+      RAILS_API_URL: http://rails-app:3000
+      INTERVAL: 60  # yield accrual every 60s for demo
+    depends_on: [mongo, rails-app]
+
+  sinatra-reports:
+    build: ./sinatra-reports
+    ports: ["4567:4567"]
+    environment:
+      DATABASE_URL: postgres://postgres:password@postgres:5432/gotchi_forge
+    depends_on: [rails-app, postgres]
+
+  etl-redshift:
+    build: ./etl-redshift
+    command: ["sh", "-c", "sleep 5 && ./etl --once"]
+    environment:
+      REDSHIFT_URL: postgres://postgres:password@redshift-proxy:5432/analytics?sslmode=disable
+      MONGO_URI: mongodb://mongo:27017/gotchi_forge
+      POSTGRES_URL: postgres://postgres:password@postgres:5432/gotchi_forge?sslmode=disable
+    depends_on: [rails-app, go-processor, redshift-proxy, postgres]
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: gotchi_forge
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports: ["5433:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+
+  mongo:
+    image: mongo:7
+    ports: ["27017:27017"]
+
+  redshift-proxy:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports: ["5434:5432"]
