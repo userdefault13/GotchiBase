@@ -1,4 +1,4 @@
-# GotchiForge
+# gotchibase
 
 **Aavegotchi Ecosystem Simulator** — A microservices demo simulating core Aavegotchi mechanics (summon, stake, yield, rarity) using a fintech-style stack. All mocked locally — no real blockchain or money.
 

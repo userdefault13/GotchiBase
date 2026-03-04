@@ -8,7 +8,7 @@ import Trade from './pages/Trade';
 import Portfolio from './pages/Portfolio';
 import Gotchis from './pages/Gotchis';
 
-const USER_KEY = 'gotchiforge_user';
+const USER_KEY = 'gotchibase_user';
 
 function App() {
   const [user, setUser] = useState(null);

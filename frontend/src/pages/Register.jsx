@@ -26,7 +26,7 @@ export default function Register({ onLogin }) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--bg-dark)]">
       <div className="w-full max-w-sm p-8 bg-[var(--bg-card)] rounded-xl border border-[var(--border)]">
-        <h1 className="text-2xl font-bold text-center mb-6">GotchiForge</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">gotchibase</h1>
         <h2 className="text-lg text-[var(--text-secondary)] text-center mb-6">Create account</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

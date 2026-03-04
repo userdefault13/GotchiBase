@@ -11,7 +11,7 @@ export default function Sidebar({ user, onLogout }) {
   return (
     <aside className="w-64 min-h-screen bg-[var(--bg-card)] border-r border-[var(--border)] flex flex-col shrink-0 max-lg:fixed max-lg:z-50 max-lg:left-0 max-lg:top-0 max-lg:h-full">
       <div className="p-6 border-b border-[var(--border)]">
-        <h1 className="text-xl font-bold text-[var(--accent-blue)]">GotchiForge</h1>
+        <h1 className="text-xl font-bold text-[var(--accent-blue)]">gotchibase</h1>
       </div>
       <nav className="flex-1 p-4 space-y-1">
         {navItems.map(({ to, label }) => (

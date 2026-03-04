@@ -1,7 +1,7 @@
 module Api
   class TradesController < ApplicationController
     def index
-      limit = [params[:limit].to_i, 100].clamp(1, 100)
+      limit = (params[:limit].presence&.to_i || 100).clamp(1, 100)
       trades = Trade.order(created_at: :desc).limit(limit)
 
       render json: trades.map { |t|

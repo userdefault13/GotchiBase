@@ -1,4 +1,4 @@
-# GotchiForge — Project Structure
+# gotchibase — Project Structure
 
 ```
 gotchi-forge/

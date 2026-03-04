@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/", to: proc { [200, {}, ["GotchiForge API"]] }
+  get "/", to: proc { [200, {}, ["gotchibase API"]] }
   namespace :api do
     post "users", to: "users#create"
     get "users/find", to: "users#find"

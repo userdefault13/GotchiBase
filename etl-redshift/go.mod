@@ -1,4 +1,4 @@
-module gotchiforge/etl
+module gotchibase/etl
 
 go 1.22
 

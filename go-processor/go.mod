@@ -1,4 +1,4 @@
-module gotchiforge/processor
+module gotchibase/processor
 
 go 1.22
 

@@ -1,6 +1,6 @@
-# GotchiForge MVP — Planning Document
+# gotchibase MVP — Planning Document
 
-**Project:** GotchiForge – Aavegotchi Ecosystem Simulator  
+**Project:** gotchibase – Aavegotchi Ecosystem Simulator  
 **Goal:** Microservices demo simulating core Aavegotchi mechanics (summon, stake, yield, rarity) using the target tech stack. All mocked locally — no real blockchain/money.  
 **Target:** `docker-compose up` → full working sandbox + README + tests.
 
@@ -104,7 +104,7 @@
 ### Phase 3: Golang Processor — Yield & Events (2–3 days)
 
 **Tasks:**
-- [ ] `go mod init gotchiforge/processor` in `go-processor/`
+- [ ] `go mod init gotchibase/processor` in `go-processor/`
 - [ ] Config: `MONGO_URI`, `RAILS_API_URL`, `INTERVAL` (seconds)
 - [ ] Yield accrual loop: ticker every N seconds
 - [ ] Fetch staked Gotchis (HTTP to Rails or direct Postgres)
